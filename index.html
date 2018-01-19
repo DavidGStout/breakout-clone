@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+	<meta content="text/html;charset=utf-8">
+	<title>Breakout Clone</title>
+</head>
+
+<body>
+	<canvas id="gameCanvas" width="800" height="600"></canvas>
+
+	<script>
+	var canvas, CanvasContext;
+
+	window.onload = function() {
+		canvas = document.getElementById('gameCanvas');
+		canvasContext = canvas.getContext('2d');
+
+		canvasContext.fillStyle = '#007FFF';
+		canvasContext.fillRect(0,0, canvas.width, canvas.height);
+	}
+
+	</script>
+</body>
+</html>
