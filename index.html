@@ -1,65 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+	<title></title>
 </head>
-
 <body>
 
-	<canvas id="gameCanvas"  width="800" height="600"></canvas>
-
+	<canvas id="gameCanvas" width="800" height="600"></canvas>
 	<script>
-
+		
 		var ballX = 75;
 		var ballSpeedX = 25;
 		var ballY = 75;
-		var ballSpeedY = 7;
-		var canvas, canvasContext;
+		var ballSpeedY = 10;
 
+
+		var canvas, canvasContext;
 		window.onload = function() {
 			canvas = document.getElementById('gameCanvas');
 			canvasContext = canvas.getContext('2d');
 
 			var framesPerSecond = 30;
 			setInterval(updateAll, 1000/framesPerSecond);
-
 		}
 
 		function updateAll() {
-
-		ballX += ballSpeedX;
-		ballY += ballSpeedY;
-
-			if(ballX < 0){
-				ballSpeedX *= -1;
+			ballX+= ballSpeedX;
+			if(ballX < 0) {
+				ballSpeedX  *= -1;
+			}
+			if(ballX > canvas.width) {
+				ballSpeedX  *= -1;
 			}
 
-			if(ballX > canvas.width){
-				ballSpeedX *= -1;
+			ballY+= ballSpeedY;
+			if(ballY < 0) {
+				ballSpeedY  *= -1;
+			}
+			if(ballY > canvas.height) {
+				ballSpeedY  *= -1;
 			}
 
-			if(ballY < 0){
-				ballSpeedY *= -1;
-			}
-
-			if(ballY > canvas.height){
-				ballSpeedY *= -1;
-			}
-
-			//draws canvas
-			canvasContext.fillStyle = '#007FFF';
+			canvasContext.fillStyle = 'blue';
 			canvasContext.fillRect(0,0,canvas.width,canvas.height);
 
-			//draws ball
 			canvasContext.fillStyle = 'white';
 			canvasContext.beginPath();
-			canvasContext.arc(ballX,ballY, 10, 0, Math.PI*2, true);
+			canvasContext.arc(ballX,ballY,10, 0, Math.PI*2, true);
 			canvasContext.fill();
-
 		}
 
 	</script>
 
-<body>
-
+</body>
 </html>
