@@ -24,6 +24,11 @@
 		}
 
 		function updateAll() {
+			moveAll();
+			drawAll();
+		}
+			
+			function moveAll() {
 			ballX+= ballSpeedX;
 			if(ballX < 0) {
 				ballSpeedX  *= -1;
@@ -39,13 +44,23 @@
 			if(ballY > canvas.height) {
 				ballSpeedY  *= -1;
 			}
+			}
 
-			canvasContext.fillStyle = 'blue';
-			canvasContext.fillRect(0,0,canvas.width,canvas.height);
+			function drawAll() {
 
-			canvasContext.fillStyle = 'white';
+				colorRect(0,0, canvas.width,canvas.height,'blue');
+				colorCircle(ballX,ballY, 10, 'white');
+		}
+
+		function colorRect(topLeftX,topLeftY, boxWidth, boxHeight, fillColor) {
+			canvasContext.fillStyle = fillColor;
+			canvasContext.fillRect(topLeftX,topLeftY, boxWidth, boxHeight);
+		}
+
+		function colorCircle(centerX,centerY,radius,fillColor) {
+			canvasContext.fillStyle = fillColor;
 			canvasContext.beginPath();
-			canvasContext.arc(ballX,ballY,10, 0, Math.PI*2, true);
+			canvasContext.arc(centerX,centerY, radius, 0, Math.PI*2, true);
 			canvasContext.fill();
 		}
 
